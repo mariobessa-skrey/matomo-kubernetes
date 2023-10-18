@@ -34,7 +34,7 @@ spec:
           runAsUser: {{.Values.matomo.runAsUser}}
           privileged: false
           allowPrivilegeEscalation: false
-        imagePullPolicy: Always
+        imagePullPolicy: {{.Values.global.imagePullPolicy}}
         env:
         - name: MATOMO_DB_PASSWORD
           valueFrom:
