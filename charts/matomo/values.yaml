@@ -111,6 +111,7 @@ matomo:
       max_children: 75
       process_idle_timeout: 600s
       max_requests: 500
+  config: {}
 nginx:
   image: digitalist/nginx:1.21.6
   imagePullSecrets: []

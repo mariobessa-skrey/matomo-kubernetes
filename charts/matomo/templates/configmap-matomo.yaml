@@ -86,7 +86,7 @@ data:
           },
           "General": {
             "show_update_notification_to_superusers_only": 1,
-            "noreply_email_address": "noreply@digitalistgroup.com",
+            "noreply_email_address": {{ if .Values.matomo.mail.defaultHostnameIfEmpty }}{{ .Values.matomo.mail.defaultHostnameIfEmpty | quote }}{{ else }}"noreply@digitalistgroup.com"{{ end }},
             "enable_framed_pages": 1,
             "enable_framed_settings": 1,
             "enable_trusted_host_check": 0,
@@ -122,8 +122,19 @@ data:
             "time_before_week_archive_considered_outdated": 10800,
             "time_before_month_archive_considered_outdated": 32400,
             "time_before_year_archive_considered_outdated": 64800,
-            "time_before_range_archive_considered_outdated": 10800
-          }
+            "time_before_range_archive_considered_outdated": 10800{{ if .Values.matomo.mail }},
+            "emails_enabled": 1{{ end }}
+          }{{ if .Values.matomo.mail }},
+          "mail": {
+            {{ if .Values.matomo.mail.defaultHostnameIfEmpty }}"defaultHostnameIfEmpty": {{ .Values.matomo.mail.defaultHostnameIfEmpty | quote }},{{ end }}
+            {{ if .Values.matomo.mail.transport }}"transport": {{ .Values.matomo.mail.transport | quote }},{{ end }}
+            {{ if .Values.matomo.mail.port }}"port": {{ .Values.matomo.mail.port }},{{ end }}
+            {{ if .Values.matomo.mail.host }}"host": {{ .Values.matomo.mail.host | quote }},{{ end }}
+            {{ if .Values.matomo.mail.type }}"type": {{ .Values.matomo.mail.type | quote }},{{ end }}
+            {{ if .Values.matomo.mail.username }}"username": {{ .Values.matomo.mail.username | quote }},{{ end }}
+            {{ if .Values.matomo.mail.password }}"password": {{ .Values.matomo.mail.password | quote }},{{ end }}
+            {{ if .Values.matomo.mail.encryption }}"encryption": {{ .Values.matomo.mail.encryption | quote }}{{ end }}
+          }{{ end }}
         }
       }
 
