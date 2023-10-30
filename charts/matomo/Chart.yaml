@@ -1,5 +1,6 @@
 apiVersion: v2
-appVersion: "4.12.3"
-description: A Helm chart Matomo
+appVersion: "4.15.1"
+description: A Helm chart for Matomo Analytics. Forked from https://github.com/digitalist-se/matomo-kubernetes.
 name: matomo
-version: 11.0.18
+version: 1.0.0
+type: application

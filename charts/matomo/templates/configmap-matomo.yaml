@@ -74,7 +74,10 @@ data:
           "Heartbeat",
           "Marketplace",
           "ProfessionalServices",
-          "UserConsole"
+          "UserConsole",
+          "QueuedTracking",
+          "TrackingCodeCustomizer",
+          "ProtectTrackID"
         ],
         "Site": {
           "name": "Localhost",
@@ -134,7 +137,12 @@ data:
             {{ if .Values.matomo.mail.username }}"username": {{ .Values.matomo.mail.username | quote }},{{ end }}
             {{ if .Values.matomo.mail.password }}"password": {{ .Values.matomo.mail.password | quote }},{{ end }}
             {{ if .Values.matomo.mail.encryption }}"encryption": {{ .Values.matomo.mail.encryption | quote }}{{ end }}
-          }{{ end }}
+          }{{ end }},
+          "QueuedTracking": {
+            "backend": "mysql",
+            "numQueueWorkers": 1,
+            "numRequestsToProcess": 25
+          }
         }
       }
 
