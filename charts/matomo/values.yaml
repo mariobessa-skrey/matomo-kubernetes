@@ -23,9 +23,9 @@ matomo:
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName
   imagePullSecrets: []
-  image: digitalist/matomo:4.12.3
+  image: skreysoftware/matomo-kubernetes:4.15.1_6-fpm-alpine
   runAsUser: 82
-  installCommand: ./console plugin:activate ExtraTools && ./console matomo:install --install-file=/tmp/matomo/install.json --force --do-not-drop-db
+  installCommand:  ./console matomo:install --install-file=/tmp/matomo/install.json --force --do-not-drop-db && ./console plugin:activate ExtraTools
   # Post install for helm chart. Starts a post-install-job.
   postInstallCommand: ""
   ## If you have a premium license for plugins, set it here.
